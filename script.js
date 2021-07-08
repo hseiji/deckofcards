@@ -1,5 +1,4 @@
 let id = document.getElementById("deckId")
-let drawBtn = document.getElementById("drawBtn")
 
 // Shuffle the Cards
 //'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
@@ -39,12 +38,9 @@ fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,
     })
 
 
+function drawCard() {
+    console.log("You drawed a card.")
+}
 
-drawBtn.addEventListener('click', e => {
-    console.log("this is a test")
-})
+document.getElementById("drawBtn").addEventListener('click', drawCard)
 
-
-// function drawCard(deck) {
-
-// }
