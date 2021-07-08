@@ -1,5 +1,5 @@
 let id = document.getElementById("deckId")
-
+let drawBtn = document.getElementById("drawBtn")
 
 // Shuffle the Cards
 //'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
@@ -27,9 +27,10 @@ fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,
                     console.log("Not Successful")
                 }
             })
+            //.then(data => console.log(data))
             .then(deck => deck.cards)
-            .then(cards => cards.filter(c => c.suit === 'CLUBS'))
-            .then(cards => cards.sort((c1, c2) => c1.value - c2.value))
+            // .then(cards => cards.filter(c => c.suit === 'CLUBS'))
+            // .then(cards => cards.sort((c1, c2) => c1.value - c2.value))
             .then(cards => cards.map(c => c.image))
             .then(url => url.map(u => `<img width="100" src="${u}"/>`).join(''))
             .then(imgString => {
@@ -37,3 +38,13 @@ fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,
             })
     })
 
+
+
+drawBtn.addEventListener('click', e => {
+    console.log("this is a test")
+})
+
+
+// function drawCard(deck) {
+
+// }
