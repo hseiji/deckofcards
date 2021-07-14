@@ -7,7 +7,7 @@ let rmnCards = document.getElementById("rmnCards")
 fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH')
     .then(res => {
         if (res.ok) {
-            console.log("Success")
+            console.log("Success Shuffling")
             return res.json()
         } else { 
             console.log("Not Successful")
@@ -22,7 +22,7 @@ fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,
         fetch("https://deckofcardsapi.com/api/deck/" + data.deck_id + "/draw/?count=1")
             .then(res => {
                 if (res.ok) {
-                    console.log("Success")
+                    console.log("Success drawing card")
                     return res.json()
                 } else { 
                     console.log("Not Successful")
@@ -35,7 +35,10 @@ fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,
             .then(cards => cards.map(c => c.image))
             .then(url => url.map(u => `<img width="100" src="${u}"/>`).join(''))
             .then(imgString => {
-                document.getElementById('newCard').innerHTML = `<div>${imgString}</div>`
+                const div = document.createElement('div')
+                div.innerHTML = `<div>${imgString}</div>`
+                document.getElementById('newCard').after(div)                
+                // document.getElementById('newCard').innerHTML = `<div>${imgString}</div>`
             })
     })
 
@@ -47,7 +50,7 @@ function drawCard() {
     fetch("https://deckofcardsapi.com/api/deck/" + id.innerText + "/draw/?count=1")
     .then(res => {
         if (res.ok) {
-            console.log("Success")
+            console.log("Success drawing card")
             return res.json()
         } else { 
             console.log("Not Successful")
@@ -57,7 +60,9 @@ function drawCard() {
     .then(cards => cards.map(c => c.image))
     .then(url => url.map(u => `<img width="100" src="${u}"/>`).join(''))
     .then(imgString => {
-        document.getElementById('newCard').innerHTML = `<div>${imgString}</div>`
+        const div = document.createElement('div')
+        div.innerHTML = `<div>${imgString}</div>`
+        document.getElementById('newCard').after(div)
     })
 
 
